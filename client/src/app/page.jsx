@@ -1,6 +1,8 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "../components/AppSidebar";
 import ChartWrapper from "../components/ChartWrapper";
+import Stats from "../components/Stats";
+import RecentTrans from "../components/RecentTrans";
 
 export default function HomePage() {
   return (
@@ -8,7 +10,7 @@ export default function HomePage() {
       <SidebarProvider>
         <div className="w-full flex min-h-screen overflow-hidden">
           <AppSidebar />
-          <div className="flex-1 py-6 px-4 bg-gray-200 ">
+          <div className="flex-1 py-3 px-4 bg-gray-200 ">
             <SidebarTrigger />
             <div className="mb-8">
               <h1 className="text-3xl font-bold mb-1 text-center">
@@ -18,70 +20,8 @@ export default function HomePage() {
                 Your personal finance tracker
               </p>
             </div>
-
-            {/* Stats overview section */}
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-full shadow-md text-center">
-                <p className="text-2xl font-bold">$30,000</p>
-                <p className="text-gray-700 text-md pt-1">Total Income</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-full shadow-md text-center">
-                <p className="text-2xl font-bold">$15,000</p>
-                <p className="text-gray-700 text-md pt-1">Total Expenses</p>
-              </div>
-
-              <div className="bg-white p-6 rounded-full shadow-md text-center">
-                <p className="text-2xl font-bold">20</p>
-                <p className="text-gray-700 text-md pt-1">Total Transaction</p>
-              </div>
-            </div>
-
-            {/* Recent transaction section */}
-
-            <div className="mt-8 bg-white p-6 rounded-lg shadow-md h-[400px] w-full max-w-screen-lg mx-auto">
-              <h2 className="text-xl font-bold mb-4">Recent Transactions</h2>
-
-              <div className="flex flex-col space-y-4 overflow-y-scroll max-h-[80%]">
-                <div className="flex justify-between items-center p-4 bg-gray-100 rounded-lg">
-                  <div>
-                    <p className="text-md font-semibold">Salary</p>
-                    <p className="text-sm text-gray-600">
-                      Received on 01/01/2025
-                    </p>
-                  </div>
-                  <span className="text-green-500 font-bold">$5,000</span>
-                </div>
-
-                <div className="flex justify-between items-center p-4 bg-gray-100 rounded-lg">
-                  <div>
-                    <p className="text-md font-semibold">Groceries</p>
-                    <p className="text-sm text-gray-600">Spent on 02/01/2025</p>
-                  </div>
-                  <span className="text-red-500 font-bold">-$200</span>
-                </div>
-
-                <div className="flex justify-between items-center p-4 bg-gray-100 rounded-lg">
-                  <div>
-                    <p className="text-md font-semibold">Utilities</p>
-                    <p className="text-sm text-gray-600">Spent on 03/01/2025</p>
-                  </div>
-                  <span className="text-red-500 font-bold">-$150</span>
-                </div>
-
-                <div className="flex justify-between items-center p-4 bg-gray-100 rounded-lg">
-                  <div>
-                    <p className="text-md font-semibold">Utilities</p>
-                    <p className="text-sm text-gray-600">Spent on 03/01/2025</p>
-                  </div>
-                  <span className="text-red-500 font-bold">-$150</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Monthly expense bar section */}
-
+            <Stats/>
+            <RecentTrans />
             <ChartWrapper />
           </div>
         </div>
