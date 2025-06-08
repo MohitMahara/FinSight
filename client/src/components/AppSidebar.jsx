@@ -34,7 +34,7 @@ export function AppSidebar() {
   const [activeItem, setActiveItem] = useState("Home");
 
   return (
-    <Sidebar className={"shadow-lg"}>
+    <Sidebar className={"w-64 shrink-0 shadow-lg h-screen"}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className={"text-2xl text-gray-900 mb-4 pt-4"}>FinSight</SidebarGroupLabel>
