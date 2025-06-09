@@ -2,7 +2,7 @@
 
 import { Home, Inbox} from "lucide-react"
 import { usePathname } from "next/navigation";
-import { Sidebar,SidebarContent,SidebarGroup,SidebarGroupContent,SidebarGroupLabel,SidebarMenu,SidebarMenuButton,SidebarMenuItem} from "@/components/ui/sidebar"
+import { SidebarContent, Sidebar ,SidebarGroup, SidebarGroupContent,SidebarGroupLabel,SidebarMenu,SidebarMenuButton,SidebarMenuItem  } from "../../srccomponents/ui/sidebar";
 import Link from "next/link";
 
 const items = [

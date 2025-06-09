@@ -1,7 +1,7 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@//components/AppSidebar";
-import TransCard from "@//components/TransCard";
-import AddTransaction from "@//components/AddTransaction";
+import { SidebarProvider, SidebarTrigger } from "../../../srccomponents/ui/sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
+import TransCard from "@/components/TransCard";
+import AddTransaction from "@/components/AddTransaction";
 
 
 export default function Transactions() {

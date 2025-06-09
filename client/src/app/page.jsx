@@ -1,4 +1,4 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "../../srccomponents/ui/sidebar";
 import { AppSidebar } from "../components/AppSidebar";
 import ChartWrapper from "../components/ChartWrapper";
 import Stats from "../components/Stats";
