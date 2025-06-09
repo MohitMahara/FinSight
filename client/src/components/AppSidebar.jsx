@@ -1,20 +1,10 @@
 'use client';
 
 import { Home, Inbox} from "lucide-react"
+import { usePathname } from "next/navigation";
+import { Sidebar,SidebarContent,SidebarGroup,SidebarGroupContent,SidebarGroupLabel,SidebarMenu,SidebarMenuButton,SidebarMenuItem} from "@/components/ui/sidebar"
+import Link from "next/link";
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { useState } from "react"
-
-// Menu items.
 const items = [
   {
     title: "Home",
@@ -30,8 +20,7 @@ const items = [
 ]
 
 export function AppSidebar() {
-
-  const [activeItem, setActiveItem] = useState("Home");
+  const pathname = usePathname();
 
   return (
     <Sidebar className={"w-64 shrink-0 shadow-lg h-screen"}>
@@ -42,11 +31,11 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className={`text-lg text-gray-900 font-semibold p-2 mt-2 ${activeItem === item.title ? "bg-gray-200 hover:bg-gray-200" : ""}`} onClick={() => setActiveItem(item.title)}>
-                    <a href={item.url}>
+                  <SidebarMenuButton asChild className={`text-lg text-gray-900 font-semibold py-4 px-2 mt-2 ${pathname === item.url ? "bg-gray-200 hover:bg-gray-200" : ""}`}>
+                    <Link href={item?.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

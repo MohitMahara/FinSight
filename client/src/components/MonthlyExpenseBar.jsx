@@ -2,9 +2,7 @@
 
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-
 export default function MonthlyExpenseBar() {
-
   const data = [
     { month: 'Jan', total: 4000 },
     { month: 'Feb', total: 3000 },
@@ -34,7 +32,7 @@ export default function MonthlyExpenseBar() {
               <Tooltip />
             </LineChart>
           </ResponsiveContainer>      
-      </div>
+    </div>
     </>
   );
 }

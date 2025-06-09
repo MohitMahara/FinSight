@@ -23,7 +23,7 @@ export default function Transactions() {
                 <p className="text-gray-600 mb-4 italic text-gray-700 tracking-wide text-center">Here you can view and manage all your transactions.</p>
              </div>
 
-            <AddTransaction />
+             <AddTransaction />
 
 
              <div className="max-w-5xl mt-6 mx-auto bg-white p-6 rounded-lg shadow-md">
