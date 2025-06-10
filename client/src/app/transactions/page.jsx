@@ -1,16 +1,11 @@
 import { SidebarProvider, SidebarTrigger } from "../../../srccomponents/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
-import TransCard from "@/components/TransCard";
 import AddTransaction from "@/components/AddTransaction";
+import AllTransaction from "@/components/AllTransaction";
 
 
 export default function Transactions() {
-  const transcation = {
-    title: "Grocery Shopping",
-    status: "sent",
-    amount: 1500,
-    date: "08-06-2025",
-  }
+
   return (
     <main className="w-full min-h-screen">
       <SidebarProvider>
@@ -24,19 +19,7 @@ export default function Transactions() {
              </div>
 
              <AddTransaction />
-
-
-             <div className="max-w-5xl mt-6 mx-auto bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-lg font-bold mb-4">All Transactions</h2>
-               <div className="flex flex-col space-y-4 overflow-y-scroll h-[60vh]">
-                <TransCard transcation={transcation} />
-                <TransCard transcation={transcation} />
-                <TransCard transcation={transcation} />
-                <TransCard transcation={transcation} />
-                <TransCard transcation={transcation} />
-              </div>
-            </div>
-
+             <AllTransaction />
           </div>
         </div>
       </SidebarProvider>

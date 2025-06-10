@@ -1,4 +1,6 @@
-export default function TransCard({ transcation }) {
+export default function TransCard({ transaction }) {
+   console.log(transaction);
+
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-IN", {
       style: "currency",
@@ -10,10 +12,10 @@ export default function TransCard({ transcation }) {
   return (
     <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
         <div className="">
-            <p className="text-md font-semibold">{transcation.title}</p>
-            <p className="text-gray-800 text-sm semibold"> {transcation.status.toLowerCase()} on {new Date(transcation.date).toLocaleDateString()}</p>    
+            <p className="text-md font-semibold">{transaction?.title}</p>
+            <p className="text-gray-800 text-sm semibold"> {transaction?.status.toLowerCase()} on {new Date(transaction?.date).toLocaleDateString()}</p>    
         </div>
-      <p className={`text-md font-bold mt-2 ${transcation.status == "Sent" ? "text-red-500" : "text-green-500"} `}> {formatCurrency(transcation.amount)} </p>
+      <p className={`text-md font-bold mt-2 ${transaction?.status == "Sent" ? "text-red-500" : "text-green-500"} `}> {formatCurrency(transaction?.amount)} </p>
     </div>
   );
 }

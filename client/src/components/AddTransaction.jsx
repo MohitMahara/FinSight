@@ -33,7 +33,8 @@ export default function AddTransaction() {
         setAmount("");
         setDate("");
         setStatus("");
-        console.log("Transaction added successfully:", res.data);
+        setDescription("");
+        console.log("Transaction added successfully");
       }
 
 

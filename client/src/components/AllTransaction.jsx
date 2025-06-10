@@ -1,11 +1,11 @@
 "use client";
 
-import TransCard from "./TransCard"
-import { useEffect, useState } from "react";
+import TransCard from "./TransCard";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function RecentTrans() {
-  
+export default function AllTransaction() {
+
   const [transactions, setTransactions] = useState([]);
 
   const getTranscation = async () => {
@@ -27,15 +27,18 @@ export default function RecentTrans() {
   }, []);
 
 
-    return (
-      <div className="mt-8 bg-white p-6 rounded-lg shadow-md h-[400px] w-full max-w-screen-lg mx-auto">
-        <h2 className="text-xl font-bold mb-4">Recent Transactions</h2>
-
-        <div className="flex flex-col space-y-4 overflow-y-scroll max-h-[80%]">
-          {transactions.map((transaction) => (
+  return (
+    <div className="max-w-5xl mt-6 mx-auto bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-lg font-bold mb-4">All Transactions</h2>
+      <div className="flex flex-col space-y-4 overflow-y-scroll h-[60vh]">
+        {transactions.length == 0 ? (
+          <p className="text-gray-500">No transactions found.</p>
+        ) : (
+          transactions?.map((transaction) => (
             <TransCard transaction={transaction} key={transaction.id} />
-          ))}
-        </div>
+          ))
+        )}
       </div>
-    )
-} 
+    </div>
+  );
+}

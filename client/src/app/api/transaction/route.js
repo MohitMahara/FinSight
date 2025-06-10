@@ -1,10 +1,10 @@
 import { prisma } from '@/lib/prisma';
 
 export async function GET() {
-  const transaction = await prisma.transaction.findMany();
+  const transactions = await prisma.transaction.findMany();
 
   return new Response(
-    JSON.stringify({ msg: "All Transaction", success: true }),
+    JSON.stringify({ msg: "All Transaction", success: true , transactions}),
     {
       status: 200,
       headers: { "Content-Type": "application/json" },
