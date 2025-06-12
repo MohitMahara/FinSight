@@ -46,31 +46,3 @@ export async function POST(req) {
   );;
 }
 
-
-
-export async function PUT(req) {
-  const data = await req.json();
-
-  const transaction = await prisma.transaction.update({
-    where: {
-      id: data.id,
-    },
-    data: {
-      amount: data.amount,
-      title : data.title,
-      status: data.status,
-      date: new Date(data.date),
-      category: data.category,
-      description: data.description,
-    },
-  });
-
-  return new Response(
-    JSON.stringify({ msg: "Transaction updated successfully", success: true }),
-    {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    }
-  );;
-}
-

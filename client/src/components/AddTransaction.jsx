@@ -47,7 +47,7 @@ export default function AddTransaction() {
     <div className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-lg font-bold">Add New Transaction</h2>
 
-      <form className="mt-4">
+      <form className="mt-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input type="text" placeholder="Title" className="p-2 border rounded-md" value={title} onChange={(e) => {setTitle(e.target.value)}} required/>
           <input type="number" placeholder="Amount" className="p-2 border rounded-md" value={amount} onChange={(e) => setAmount(e.target.value)} required/>
@@ -59,7 +59,7 @@ export default function AddTransaction() {
             <option value="Received">Received</option>
           </select>
         </div>
-        <button type="submit" className="mt-6 bg-black text-gray-100 py-2 px-4 rounded-md hover:bg-gray-200 hover:text-black transition duration-200 cursor-pointer" onClick={handleSubmit} >
+        <button type="submit" className="mt-6 bg-black text-gray-100 py-2 px-4 rounded-md hover:bg-gray-200 hover:text-black transition duration-200 cursor-pointer">
           Add Transaction
         </button>
       </form>
