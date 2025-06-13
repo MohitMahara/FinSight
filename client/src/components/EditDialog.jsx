@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useTransactions } from "./TransactionContext";
 import {
   Dialog,
   DialogContent,
@@ -18,6 +19,9 @@ export default function EditDialog({open, onOpenChange, transId}) {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("");
+  const {getTransactions, loading} = useTransactions();
+
+  if(loading) return <>Loading...</>;
 
 
   const getTransDetail = async() =>{
@@ -62,6 +66,7 @@ export default function EditDialog({open, onOpenChange, transId}) {
       if(res.data.success){
         onOpenChange(false);
         toast.success(res.data.msg);
+        getTransactions();
       }
         
     } catch (error) {

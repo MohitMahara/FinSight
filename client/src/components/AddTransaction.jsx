@@ -3,13 +3,18 @@
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useTransactions } from "./TransactionContext";
 
 export default function AddTransaction() {
+  const { getTransactions, loading } = useTransactions();
+  if(loading) return <>Loading...</>;
+
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");   
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("");
   const [description, setDescription] = useState("");
+  
 
 
   const handleSubmit = async (e) => {
@@ -36,6 +41,7 @@ export default function AddTransaction() {
         setStatus("");
         setDescription("");
         toast.success("Transaction added successfully");
+        getTransactions();
       }
 
     } catch (error) {

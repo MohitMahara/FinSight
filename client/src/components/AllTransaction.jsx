@@ -1,30 +1,13 @@
 "use client";
 
 import TransCard from "./TransCard";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useTransactions } from "./TransactionContext";
 
 export default function AllTransaction() {
 
-  const [transactions, setTransactions] = useState([]);
+  const {transactions, loading} = useTransactions();
 
-  const getTranscation = async () => {
-     try {
-        const res = await axios.get("/api/transaction");
-        if (res.data.success) {
-          const transactions = res.data.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
-          setTransactions(transactions);
-        }
-     } catch (error) {
-        console.log(error.message);
-     }
-  };
-
-
-  useEffect(() => {
-    getTranscation();
-  }, []);
-
+  if(loading) return <>Loading...</>;
 
   return (
     <div className="max-w-5xl mt-6 mx-auto bg-white p-6 rounded-lg shadow-md">
