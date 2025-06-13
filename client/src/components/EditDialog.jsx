@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogFooter
 } from "./ui/dialog";
+
 
 export default function EditDialog({open, onOpenChange, transId}) {
   const [title, setTitle] = useState("");
@@ -19,6 +20,31 @@ export default function EditDialog({open, onOpenChange, transId}) {
   const [status, setStatus] = useState("");
 
 
+  const getTransDetail = async() =>{
+    try {
+
+      if(!transId) return;
+
+      const res = await axios.get(`api/transaction/${transId}`);
+
+      if(res.data.success){
+          const transaction = res.data.transaction;
+          setTitle(transaction?.title);
+          setDescription(transaction?.description);
+          setAmount(transaction?.amount);
+          setDate(transaction?.date.slice(0, 10));
+          setStatus(transaction?.status);
+      }
+      
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
+
+  useEffect(() =>{
+    getTransDetail();
+  }, [])
 
 
   const handleSubmit = async(e) => {
@@ -32,9 +58,14 @@ export default function EditDialog({open, onOpenChange, transId}) {
         status,
         description
       });
+
+      if(res.data.success){
+        onOpenChange(false);
+        toast.success(res.data.msg);
+      }
         
     } catch (error) {
-        console.log(error.message);
+        toast.error(error.message);
     }
   }
 
@@ -71,16 +102,17 @@ export default function EditDialog({open, onOpenChange, transId}) {
                   <option value="Sent">Sent</option>
                   <option value="Received">Received</option>
                 </select>
+
+              </div>                 
+              <div className="flex gap-2 justify-end">
+                <button type="button" className="mt-6 bg-gray-300 text-black py-2 px-8 rounded-md hover:bg-gray-200 hover:text-black transition duration-200 cursor-pointer" onClick={() => onOpenChange(false)}>
+                  Cancel
+                </button>
+                <button type="submit" className="mt-6 bg-black text-gray-100 py-2 px-8 rounded-md hover:bg-black-200 hover:text-white transition duration-200 cursor-pointer">
+                  Save Changes
+                </button>
               </div>
             </form>
-            <DialogFooter>
-              <button type="button" className="mt-6 bg-gray-300 text-black py-2 px-8 rounded-md hover:bg-gray-200 hover:text-black transition duration-200 cursor-pointer">
-                Cancel
-              </button>
-              <button type="submit" className="mt-6 bg-black text-gray-100 py-2 px-8 rounded-md hover:bg-black-200 hover:text-white transition duration-200 cursor-pointer">
-                Save Changes
-              </button>
-            </DialogFooter>
       </DialogContent>
     </Dialog>
   );

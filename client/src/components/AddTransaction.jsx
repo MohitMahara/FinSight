@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function AddTransaction() {
   const [title, setTitle] = useState("");
@@ -28,18 +29,17 @@ export default function AddTransaction() {
         description
       });
 
-      if(res){
+      if(res.data.success){
         setTitle("");
         setAmount("");
         setDate("");
         setStatus("");
         setDescription("");
-        console.log("Transaction added successfully");
+        toast.success("Transaction added successfully");
       }
 
-
     } catch (error) {
-      console.log("Error adding transaction:", error.message);
+      toast.error(error.message);
     }
   }
 

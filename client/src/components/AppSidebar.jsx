@@ -31,8 +31,8 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className={`text-lg text-gray-900 font-semibold py-4 px-2 mt-2 ${pathname === item.url ? "bg-gray-200 hover:bg-gray-200" : ""}`}>
-                    <Link href={item?.url}>
+                  <SidebarMenuButton asChild className={`text-lg text-gray-900 font-semibold py-4 px-2 mb-3 ${pathname === item.url ? "bg-gray-200 hover:bg-gray-200" : ""}`}>
+                    <Link href={item?.url} >
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>

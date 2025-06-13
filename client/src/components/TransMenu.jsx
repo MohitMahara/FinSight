@@ -11,19 +11,23 @@ import {Ellipsis} from "lucide-react";
 import axios from "axios";
 import EditDialog from "./EditDialog";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 
 export default function TransMenu({transId}) {
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    
   const handleDelete = async() =>{
      try {
        const res = await axios.delete(`/api/transaction/${transId}`);
+
+       if(res.data.success){
+        toast.success(res.data.msg);
+       }
        
      } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
      }
   }
 

@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Toaster } from 'react-hot-toast'
 import "../styles/globals.css";
 
 const geistSans = Geist({
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} bg-gray-200`}>
+        <Toaster position="top-center" reverseOrder={false} />
         {children}
       </body>
     </html>

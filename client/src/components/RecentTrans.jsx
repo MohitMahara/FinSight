@@ -3,6 +3,7 @@
 import TransCard from "./TransCard"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function RecentTrans() {
   
@@ -14,10 +15,9 @@ export default function RecentTrans() {
         if (res && res.data) {
           const transactions = res.data.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
           setTransactions(transactions);
-          console.log("Transactions fetched successfully");
         }
      } catch (error) {
-        console.log("Error fetching transactions:", error.message);
+        toast.error(error.message);
      }
   };
 

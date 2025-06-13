@@ -11,13 +11,12 @@ export default function AllTransaction() {
   const getTranscation = async () => {
      try {
         const res = await axios.get("/api/transaction");
-        if (res && res.data) {
+        if (res.data.success) {
           const transactions = res.data.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
           setTransactions(transactions);
-          console.log("Transactions fetched successfully");
         }
      } catch (error) {
-        console.log("Error fetching transactions:", error.message);
+        console.log(error.message);
      }
   };
 

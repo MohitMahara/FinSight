@@ -1,5 +1,38 @@
 import { prisma } from "@/lib/prisma";
 
+
+export async function GET(req, {params}) {
+
+  const transId = params.id;
+
+  const transaction = await prisma.transaction.findUnique({
+    where :{
+      id : transId
+    }
+   }
+  );
+
+  if(transaction == null){
+    return new Response(
+    JSON.stringify({ msg: "Transaction not found", success: false , transaction}),
+    {
+      status: 404,
+      headers: { "Content-Type": "application/json" },
+    }
+    );
+  }
+
+  return new Response(
+    JSON.stringify({ msg: "All Transaction", success: true , transaction}),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+}
+
+
+
 export async function PUT(req, {params}) {
 
   const data = await req.json();

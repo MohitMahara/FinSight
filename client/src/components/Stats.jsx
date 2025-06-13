@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Stats() {
 
@@ -31,7 +32,7 @@ export default function Stats() {
   const getAllTrans = async () => {
     try {
       const res = await axios.get("/api/transaction");
-      if (res && res.data) {
+      if (res.data.success) {
         const transactions = res.data.transactions;
         if (transactions && transactions.length > 0) {
           const incomeTrans = transactions.filter((trans) => trans.status.toLowerCase() === "received");
@@ -40,11 +41,9 @@ export default function Stats() {
           setIncome(getTotal(incomeTrans));
           setExpense(getTotal(expenseTrans));
         }
-      } else {
-        console.error("Failed to fetch transactions");
-      }
+      } 
     } catch (error) {
-      console.error("Error fetching transactions:", error.message);
+      toast.error(error.message);
     }
   }
 
